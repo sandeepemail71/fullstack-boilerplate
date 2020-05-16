@@ -1,7 +1,7 @@
 
 import React, { memo } from 'react';
 import styled from 'styled-components';
-// import { Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 // import { createStructuredSelector } from 'reselect';
@@ -11,7 +11,8 @@ import { compose } from 'redux';
 // import saga from './saga';
 
 import Button from '../../components/Button/index';
-import StyledInput from '../../components/Input/index';
+import TextInput from '../../components/Input/index';
+import H1 from '../../components/H6';
 
 const HomeWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
@@ -22,13 +23,26 @@ const HomeWrapper = styled.div`
   flex-direction: column;
 `;
 
-function HomePage() {
-  return (
-    <HomeWrapper>
-        <StyledInput onChange = {() => console.log("test")} />
-        <Button>Login</Button>
-    </HomeWrapper>
-  );
+const LoginWrapper = styled.div`
+    margin: 4em 0;
+`;
+
+function buttonClickHandler(event, history) {
+    event.preventDefault();
+    history.push("/client?client-id=1");
+
+}
+
+function HomePage(props) {
+    return (
+        <HomeWrapper>
+            <LoginWrapper>
+                <TextInput label="Client ID" onChange={() => console.log("test")} />
+                <TextInput label="Password" onChange={() => console.log("test")} />
+                <Button onClick={() => buttonClickHandler(event, props.history)}>Login</Button>
+            </LoginWrapper>
+        </HomeWrapper>
+    );
 }
 
 // const mapStateToProps = createStructuredSelector({
@@ -39,22 +53,22 @@ function HomePage() {
 // });
 
 function mapDispatchToProps(dispatch) {
-  return {
-    triggerDispatch: () => dispatch({ type: 'FETCH_STATIONS' }),
-  };
+    return {
+        triggerDispatch: () => dispatch({ type: 'FETCH_STATIONS' }),
+    };
 }
 
 const withConnect = connect(
-  null,
-  mapDispatchToProps,
+    null,
+    mapDispatchToProps,
 );
 
 // const withReducer = injectReducer({ key: 'test', reducer });
 // const withSaga = injectSaga({ key: 'test', saga }); // `mode` is an optional argument, default value is `RESTART_ON_REMOUNT`
 
 export default compose(
-//   withReducer,
-//   withSaga,
-  withConnect,
-  memo
+    //   withReducer,
+    //   withSaga,
+    withConnect,
+    memo
 )(HomePage);

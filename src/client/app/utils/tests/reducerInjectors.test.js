@@ -16,7 +16,7 @@ const initialState = { reduced: 'soon' };
 
 /* eslint-disable default-case, no-param-reassign */
 const reducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
       case 'TEST':
         draft.reduced = action.payload;
@@ -34,11 +34,9 @@ describe('reducer injectors', () => {
     });
 
     it('should return injectors', () => {
-      expect(getInjectors(store)).toEqual(
-        expect.objectContaining({
-          injectReducer: expect.any(Function),
-        }),
-      );
+      expect(getInjectors(store)).toEqual(expect.objectContaining({
+        injectReducer: expect.any(Function),
+      }),);
     });
 
     it('should throw if passed invalid store shape', () => {

@@ -10,7 +10,7 @@ import appReducer from './containers/App/reducer';
  */
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
-    appReducer: appReducer,
+    appReducer,
     ...injectedReducers,
   });
 

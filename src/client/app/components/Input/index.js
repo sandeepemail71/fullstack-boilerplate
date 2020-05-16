@@ -6,15 +6,29 @@
  * otherwise it'll render a link with an onclick
  */
 
-import styled from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const StyledInput = styled.input`
-  width: 100%;
-  font-size: 14px;
-  padding: 6px 8px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${props => props.error ? 'red' : 'black'};
-  margin: 0;
-`
-export default StyledInput; 
+import StyledInput from './StyledInput';
+import Wrapper from './Wrapper';
+import Label from './Label';
+
+function TextInput(props) {
+    const textInput = (
+        <Wrapper>
+            <Label>{props.label}</Label>
+            <StyledInput width='300px' height='40px' onClick={props.onclick} onChange={props.onChange} />
+        </Wrapper>
+    );
+
+
+    return textInput;
+}
+
+TextInput.propTypes = {
+    onClick: PropTypes.func,
+    children: PropTypes.node,
+    onChange: PropTypes.func
+};
+
+export default TextInput;

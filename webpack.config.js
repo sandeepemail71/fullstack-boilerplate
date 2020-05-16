@@ -34,10 +34,14 @@ module.exports = {
   devServer: {
     port: 3000,
     open: true,
+    hotOnly: true,
     historyApiFallback: true,
     proxy: {
       '/api': 'http://localhost:8080'
     }
+  },
+  watchOptions: {
+    ignored:['node_modules/**', 'src/server/**']
   },
   plugins: [
     new CleanWebpackPlugin([outputDirectory]),

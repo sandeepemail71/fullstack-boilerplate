@@ -59,6 +59,7 @@ require('./models');
 /**
  * Express configuration.
  */
+console.log(process.env.PORT,"========process.env.PORT");
 app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
 app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
 app.use(expressStatusMonitor());

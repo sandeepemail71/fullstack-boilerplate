@@ -18,32 +18,36 @@ import reducer from './reducer';
 import saga from './saga';
 
 import HomePage from '../HomePage';
+import GraphsPage from '../GraphsPage'
 
 
 import GlobalStyle from '../../global-styles';
 import Button from '../../components/Button/index';
 
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
   margin: 0 auto;
   display: flex;
   min-height: 100%;
-  padding: 0 16px;
+//   padding: 0 16px;
   flex-direction: column;
 `;
 
-function App({triggerDispatch}) {
-  // triggerDispatch();
-  return (
-    <AppWrapper>
-       <Router>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/features" component={HomePage} />
-        </Switch>
-      </Router>
-    </AppWrapper>
-  );
+function App({ triggerDispatch }) {
+	// triggerDispatch();
+	return (
+		<AppWrapper>
+			<Router>
+				<Switch>
+					<Route exact path="/"
+						component={HomePage} />
+					<Route
+						path={"/client"}
+						component={GraphsPage}
+					/>
+				</Switch>
+			</Router>
+		</AppWrapper>
+	);
 }
 
 // const mapStateToProps = createStructuredSelector({
@@ -54,22 +58,22 @@ function App({triggerDispatch}) {
 // });
 
 function mapDispatchToProps(dispatch) {
-  return {
-    triggerDispatch: () => dispatch({ type: 'FETCH_STATIONS' }),
-  };
+	return {
+		triggerDispatch: () => dispatch({ type: 'FETCH_STATIONS' }),
+	};
 }
 
 const withConnect = connect(
-  null,
-  mapDispatchToProps,
+	null,
+	mapDispatchToProps,
 );
 
 const withReducer = injectReducer({ key: 'test', reducer });
 const withSaga = injectSaga({ key: 'test', saga }); // `mode` is an optional argument, default value is `RESTART_ON_REMOUNT`
 
 export default compose(
-  withReducer,
-  withSaga,
-  withConnect,
-  memo
+	withReducer,
+	withSaga,
+	withConnect,
+	memo
 )(App);
