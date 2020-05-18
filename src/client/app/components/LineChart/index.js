@@ -32,7 +32,7 @@ function LineChart(props) {
     let tmp = {
         plotOptions: {
             series: {
-                pointInterval: 60 * 1000,
+                pointInterval: 2 * 60 * 1000,
                 pointStart: Date.UTC(startDate.getFullYear(),
                     startDate.getMonth(),
                     startDate.getDate(),
@@ -45,8 +45,13 @@ function LineChart(props) {
                 hideDelay: 250,
                 shape: 'square',
                 split: true,
-                formatter: function () {
-                    return `<b> ${moment(this.value).format()}</b>`
+                formatter: function (tooltip, x = this.x, points = this.points) {
+                    let s = `<b>${Highcharts.dateFormat('%d %b %y%y   %H:%M', x)}</b>`;
+                    points.forEach((point) =>
+                        s += `<br/>${point.series.name}: ${point.y}m`
+                    );
+
+                    return s;
                 }
             }
         },
@@ -88,18 +93,15 @@ function LineChart(props) {
             })
         }
         request(requestUrl, options).then((data) => {
-            setPower(data.data);
+            let filteredData = data.data.filter((ele, i) => i % 2 !== 0)
+            console.log(filteredData);
+            setPower(filteredData);
             setLoader(false);
         }).catch((err) => {
             console.log(err);
             setLoader(false);
         })
     }, [])
-
-    // if (loader) {
-    //     return <LoadingIndicator />
-    // }
-
 
     const handelClick = (e) => {
         const chartNo = Number(e.target.id);
@@ -118,12 +120,25 @@ function LineChart(props) {
         }
         request(requestUrl, options).then((data) => {
             Highcharts.charts[chartNo].hideLoading();
-            setPower(data.data);
+            let len = 1;
+            if (data.data.length) {
+                len = parseInt(data.data.length / 60);
+                let filteredArr = [];
+                var i = 0;
+                for (i = 0; i < data.data.length; i += len) {
+                    filteredArr.push(data.data[i]);
+                }
+                filteredArr.push(0);
+                setPower(filteredArr);
+            } else{
+                setPower(data.data);
+            }
+            console.log(power,"==============in power");
             setLoader(false);
             console.log(Highcharts, "==============Highcharts");
             Highcharts.charts[chartNo].update({
                 series: {
-                    pointInterval: 60 * 1000,
+                    pointInterval: len * 60 * 1000,
                     pointStart: Date.UTC(startDate.getFullYear(),
                         startDate.getMonth(),
                         startDate.getDate(),
@@ -141,9 +156,8 @@ function LineChart(props) {
 
     return (
         <GraphWrapper >
-            <HighchartsChart plotOptions={tmp.plotOptions} allowChartUpdate={true} >
+            <HighchartsChart plotOptions={tmp.plotOptions} allowChartUpdate={true} tooltip={tmp.plotOptions.tooltip} >
                 <Chart allowChartUpdate={true} />
-                <Tooltip padding={10} hideDelay={250} shape="square" />
                 <Title>{tmp.title}</Title>
 
                 <Subtitle>{tmp.subTitle}</Subtitle>
