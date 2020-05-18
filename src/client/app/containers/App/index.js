@@ -21,9 +21,6 @@ import HomePage from '../HomePage';
 import GraphsPage from '../GraphsPage'
 
 
-import GlobalStyle from '../../global-styles';
-import Button from '../../components/Button/index';
-
 const AppWrapper = styled.div`
   margin: 0 auto;
   display: flex;

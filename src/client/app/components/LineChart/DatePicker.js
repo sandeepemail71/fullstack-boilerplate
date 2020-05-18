@@ -45,7 +45,7 @@ function DatePickerComponent(props) {
                     className="form-input"
                     dateFormat="MMMM d, yyyy HH:mm"
                     showTimeSelect
-                    timeIntervals={30}
+                    timeIntervals={60}
                 />
             </DatePickerwrapper>
             <DatePickerwrapper>
@@ -56,7 +56,7 @@ function DatePickerComponent(props) {
                     className="form-input"
                     dateFormat="MMMM d, yyyy HH:mm"
                     showTimeSelect
-                    timeIntervals={30}
+                    timeIntervals={60}
                 />
             </DatePickerwrapper>
             <button id={props.buttonId} onClick={props.handelClick}>Plot graph</button>
