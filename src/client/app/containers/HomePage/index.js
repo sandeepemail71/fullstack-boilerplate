@@ -1,5 +1,5 @@
 
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -27,19 +27,26 @@ const LoginWrapper = styled.div`
     margin: 4em 0;
 `;
 
-function buttonClickHandler(event, history) {
+function buttonClickHandler(event, history, clintId, password) {
     event.preventDefault();
-    history.push("/client?client-id=1");
+    if(password == '123456'){
+        history.push("/client?client-id="+clintId);
+    }
+    else{
+        alert("Wrong password");
+    }
 
 }
 
 function HomePage(props) {
+    const [clintId, setClientId] = useState([]);
+    const [password, setPassword] = useState([]);
     return (
         <HomeWrapper>
             <LoginWrapper>
-                <TextInput label="Client ID" onChange={() => console.log("test")} />
-                <TextInput label="Password" onChange={() => console.log("test")} />
-                <Button onClick={() => buttonClickHandler(event, props.history)}>Login</Button>
+                <TextInput label="Client ID" onChange={(e) =>setClientId(e.target.value)} />
+                <TextInput label="Password" onChange={(e) =>setPassword(e.target.value)} />
+                <Button onClick={() => buttonClickHandler(event, props.history, clintId, password)}>Login</Button>
             </LoginWrapper>
         </HomeWrapper>
     );

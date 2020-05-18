@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const chalk = require('chalk');
+var cors = require('cors');
 const errorHandler = require('errorhandler');
 // const MongoStore = require('connect-mongo')(null);
 const dotenv = require('dotenv');
@@ -19,6 +20,12 @@ dotenv.config({ path: '.env' });
  * Create Express server.
  */
 const app = express();
+
+if (process.env.NODE_ENV === 'development') {
+    app.use(cors({
+        origin: [ 'http://localhost:3000']
+    }));
+}
 
 /**
  * Connect to MongoDB.
@@ -59,7 +66,7 @@ require('./models');
 /**
  * Express configuration.
  */
-console.log(process.env.PORT,"========process.env.PORT");
+console.log(process.env.OPENSHIFT_NODEJS_IP, "========process.env.OPENSHIFT_NODEJS_IP");
 app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
 app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
 app.use(expressStatusMonitor());
@@ -74,6 +81,17 @@ const apiRouter = express.Router();
 if (apiRoutes) {
     apiRouter.use('/api', apiRoutes);
 }
+
+app.get('/client', function (req, res) {
+    console.log(process.env.PWD, "=======in path");
+    res.sendFile(path.join(`${process.env.PWD}/dist`, 'index.html'), function (err) {
+        if (err) {
+            res.status(500).send(err)
+        }
+    })
+})
+
+
 
 app.use(apiRouter);
 
@@ -96,7 +114,7 @@ if (process.env.NODE_ENV === 'development') {
  */
 
 app.listen(app.get('port'), () => {
-    console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
+    console.log('%s App is running at %s:%d in %s mode', chalk.green('✓'), app.get('host'), app.get('port'), app.get('env'));
     console.log('  Press CTRL-C to stop\n');
 }).on('error', (err) => {
     console.log(chalk.red(err));

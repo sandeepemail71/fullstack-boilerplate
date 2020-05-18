@@ -1,5 +1,5 @@
 {
-  "watch": ["src/server/", "src/client"],
+  "watch": ["src/server/"],
   "events": {
     "crash": "sh -c 'lsof -i :${PORT:-3000} -t | xargs kill'"
   }

@@ -42,7 +42,8 @@ function App({ triggerDispatch }) {
 						component={HomePage} />
 					<Route
 						path={"/client"}
-						component={GraphsPage}
+                        component={GraphsPage}
+                        location={location}
 					/>
 				</Switch>
 			</Router>

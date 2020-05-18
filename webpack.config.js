@@ -34,8 +34,13 @@ module.exports = {
   devServer: {
     port: 3000,
     open: true,
+    compress: true,
+    disableHostCheck: true,
     hotOnly: true,
     historyApiFallback: true,
+    allowedHosts: [
+        '.ngrok.io'
+    ],
     proxy: {
       '/api': 'http://localhost:8080'
     }
@@ -53,7 +58,9 @@ module.exports = {
   resolve: {
     modules: ['node_modules', 'src/client/app'],
     alias: {
-      // containers: path.resolve(__dirname, 'src/client/app/containers'),
+      containers: path.resolve(__dirname, 'src/client/app/containers'),
+      dateUtils: path.resolve(__dirname, 'src/client/app/utils/dateUtils.js'),
+      utils: path.resolve(__dirname, 'src/client/app/utils')
     }
   }
 };

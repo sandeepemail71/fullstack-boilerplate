@@ -5,7 +5,7 @@ var path = require('path');
 var filesArray = [];
 for (var i = 1; i <= 9999; i++)  filesArray.push('set' + i);
 var json = [];
-var basePath = "/Users/sandeep/Downloads/New Dataset/newDataset";
+var basePath = "/Users/sandeep/Downloads/new_dataset_may17";
 function test(fileName) {
     var filePath =  `${basePath}/${fileName}.csv`;
     // Read CSV
@@ -25,7 +25,9 @@ function test(fileName) {
         for (var i = 0; i < headers.length - 1; i++) {
             if(headers[i] == 'Timestamp_of_Data_Looging'){
                 tmp[headers[i]] = new Date(row[i]);
-            }else {
+            }else if(headers[i] == 'Client_ID'){
+                tmp[headers[i]] = row[i].split('').splice(7).join('');
+            } else {
                 tmp[headers[i]] = row[i];
             }
         }
@@ -41,20 +43,16 @@ function test(fileName) {
 
 filesArray.forEach(test);
 console.log(json);
-makeRequest(json);
+// makeRequest(json);
 
-// var outPath = path.join(__dirname, '../test.json');
-// // Convert object to string, write json to file
-// fs.writeFileSync(outPath, JSON.stringify(json), 'utf8',
-//     function (err) { console.log(err); });
+var outPath = path.join(__dirname, './test.json');
+// Convert object to string, write json to file
+fs.writeFileSync(outPath, JSON.stringify(json), 'utf8',
+    function (err) { console.log(err); });
+
 
 
 function makeRequest(data) {
-    try {
-        data.Timestamp_of_Data_Looging = new Date(data.Timestamp_of_Data_Looging);
-    } catch (err) {
-        console.log(err);
-    }
     const axios = require('axios');
 
     axios
