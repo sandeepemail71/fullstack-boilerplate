@@ -26,7 +26,8 @@ const lineChartMap = [
         yAxisTitle: "Power Consumption - kW",
         lineSeriesName: "Power",
         caption: "The installation sector sees the most growth.",
-        requestUrl: host + "getPowerConsumption"
+        requestUrl: host + "getPowerConsumption",
+        unit: "kW"
     },
     {
         title: "Solar Employment Growth by Sector, 2010-2016",
@@ -34,7 +35,8 @@ const lineChartMap = [
         yAxisTitle: "Average Voltage (V)",
         lineSeriesName: "Voltage",
         caption: "The installation sector sees the most growth.",
-        requestUrl: host + "getAverageVoltage"
+        requestUrl: host + "getAverageVoltage",
+        unit: "V"
     },
     {
         title: "Solar Employment Growth by Sector, 2010-2016",
@@ -42,7 +44,8 @@ const lineChartMap = [
         yAxisTitle: "Maximum Voltage (V)",
         lineSeriesName: "Voltage",
         caption: "The installation sector sees the most growth.",
-        requestUrl: host + "getMaximumVoltage"
+        requestUrl: host + "getMaximumVoltage",
+        unit: "V"
     },
     {
         title: "Solar Employment Growth by Sector, 2010-2016",
@@ -50,7 +53,8 @@ const lineChartMap = [
         yAxisTitle: "Minimum Voltage (V)",
         lineSeriesName: "Voltage",
         caption: "The installation sector sees the most growth.",
-        requestUrl: host + "getMinimumVoltage"
+        requestUrl: host + "getMinimumVoltage",
+        unit: "V"
     },
     {
         title: "Solar Employment Growth by Sector, 2010-2016",
@@ -58,7 +62,8 @@ const lineChartMap = [
         yAxisTitle: "Average current (amp)",
         lineSeriesName: "current",
         caption: "The installation sector sees the most growth.",
-        requestUrl: host + "getAverageCurrent"
+        requestUrl: host + "getAverageCurrent",
+        unit: "amp"
     },
     {
         title: "Solar Employment Growth by Sector, 2010-2016",
@@ -66,7 +71,8 @@ const lineChartMap = [
         yAxisTitle: "Maximum current (amp)",
         lineSeriesName: "current",
         caption: "The installation sector sees the most growth.",
-        requestUrl: host + "getMaximumCurrent"
+        requestUrl: host + "getMaximumCurrent",
+        unit: "amp"
     },
     {
         title: "Solar Employment Growth by Sector, 2010-2016",
@@ -74,7 +80,8 @@ const lineChartMap = [
         yAxisTitle: "Minimum current (amp)",
         lineSeriesName: "current",
         caption: "The installation sector sees the most growth.",
-        requestUrl: host + "getMinimumCurrent"
+        requestUrl: host + "getMinimumCurrent",
+        unit: "amp"
     }
 ]
 function GraphsContainer(props) {

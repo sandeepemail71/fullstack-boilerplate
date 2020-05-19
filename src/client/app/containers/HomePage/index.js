@@ -24,11 +24,19 @@ const HomeWrapper = styled.div`
 `;
 
 const LoginWrapper = styled.div`
-    margin: 4em 0;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -150px;
 `;
 
 function buttonClickHandler(event, history, clintId, password) {
     event.preventDefault();
+    if(Number(clintId)< 1 || Number(clintId) >50){
+        alert("Invalid client id");
+        return;
+    }
     if(password == '123456'){
         history.push("/client?client-id="+clintId);
     }
@@ -39,8 +47,8 @@ function buttonClickHandler(event, history, clintId, password) {
 }
 
 function HomePage(props) {
-    const [clintId, setClientId] = useState([]);
-    const [password, setPassword] = useState([]);
+    const [clintId, setClientId] = useState('');
+    const [password, setPassword] = useState('');
     return (
         <HomeWrapper>
             <LoginWrapper>

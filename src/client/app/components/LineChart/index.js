@@ -48,7 +48,7 @@ function LineChart(props) {
                 formatter: function (tooltip, x = this.x, points = this.points) {
                     let s = `<b>${Highcharts.dateFormat('%d %b %y%y   %H:%M', x)}</b>`;
                     points.forEach((point) =>
-                        s += `<br/>${point.series.name}: ${point.y}m`
+                        s += `<br/>${point.series.name}: ${point.y}${props.unit}`
                     );
 
                     return s;
@@ -115,7 +115,7 @@ function LineChart(props) {
             body: JSON.stringify({
                 "startDate": startDate,
                 "endDate": endDate,
-                "clientId": "1"
+                "clientId": clientId
             })
         }
         request(requestUrl, options).then((data) => {
