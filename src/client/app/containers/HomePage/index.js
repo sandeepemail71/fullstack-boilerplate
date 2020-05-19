@@ -31,6 +31,7 @@ const LoginWrapper = styled.div`
     margin-left: -150px;
 `;
 
+
 function buttonClickHandler(event, history, clintId, password) {
     event.preventDefault();
     if(Number(clintId)< 1 || Number(clintId) >50){

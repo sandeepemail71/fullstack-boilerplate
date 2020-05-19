@@ -25,7 +25,7 @@ const lineChartMap = [
         subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Power Consumption - kW",
         lineSeriesName: "Power",
-        // caption: "Time versus Power Consumption",
+        caption: "",
         requestUrl: host + "getPowerConsumption",
         unit: "kW"
     },
@@ -34,7 +34,7 @@ const lineChartMap = [
         subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Average Voltage (V)",
         lineSeriesName: "Voltage",
-        // caption: "The installation sector sees the most growth.",
+        caption: "",
         requestUrl: host + "getAverageVoltage",
         unit: "V"
     },
@@ -43,7 +43,7 @@ const lineChartMap = [
         subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Maximum Voltage (V)",
         lineSeriesName: "Voltage",
-        // caption: "The installation sector sees the most growth.",
+        caption: "",
         requestUrl: host + "getMaximumVoltage",
         unit: "V"
     },
@@ -52,7 +52,7 @@ const lineChartMap = [
         subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Minimum Voltage (V)",
         lineSeriesName: "Voltage",
-        // caption: "The installation sector sees the most growth.",
+        caption: "",
         requestUrl: host + "getMinimumVoltage",
         unit: "V"
     },
@@ -61,7 +61,7 @@ const lineChartMap = [
         subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Average Current (Amp)",
         lineSeriesName: "Current",
-        // caption: "The installation sector sees the most growth.",
+        caption: "",
         requestUrl: host + "getAverageCurrent",
         unit: "amp"
     },
@@ -70,7 +70,7 @@ const lineChartMap = [
         subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Maximum Current (Amp)",
         lineSeriesName: "Current",
-        // caption: "The installation sector sees the most growth.",
+        caption: "",
         requestUrl: host + "getMaximumCurrent",
         unit: "amp"
     },
@@ -79,7 +79,7 @@ const lineChartMap = [
         subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Minimum Current (Amp)",
         lineSeriesName: "Current",
-        // caption: "The installation sector sees the most growth.",
+        caption: "",
         requestUrl: host + "getMinimumCurrent",
         unit: "amp"
     }
