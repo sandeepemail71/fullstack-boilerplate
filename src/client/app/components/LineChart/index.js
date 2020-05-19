@@ -32,7 +32,7 @@ function LineChart(props) {
     let tmp = {
         plotOptions: {
             series: {
-                pointInterval: 2 * 60 * 1000,
+                pointInterval: 60 * 1000,
                 pointStart: Date.UTC(startDate.getFullYear(),
                     startDate.getMonth(),
                     startDate.getDate(),
