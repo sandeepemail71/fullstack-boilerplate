@@ -21,65 +21,65 @@ const host = window.location.origin + '/api/v1/';
 
 const lineChartMap = [
     {
-        title: "Solar Employment Growth by Sector, 2010-2016",
-        subTitle: "Source: thesolarfoundation.com",
+        title: "Time versus Power Consumption",
+        subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Power Consumption - kW",
         lineSeriesName: "Power",
-        caption: "The installation sector sees the most growth.",
+        // caption: "Time versus Power Consumption",
         requestUrl: host + "getPowerConsumption",
         unit: "kW"
     },
     {
-        title: "Solar Employment Growth by Sector, 2010-2016",
-        subTitle: "Source: thesolarfoundation.com",
+        title: "Time versus Average Voltage Supply",
+        subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Average Voltage (V)",
         lineSeriesName: "Voltage",
-        caption: "The installation sector sees the most growth.",
+        // caption: "The installation sector sees the most growth.",
         requestUrl: host + "getAverageVoltage",
         unit: "V"
     },
     {
-        title: "Solar Employment Growth by Sector, 2010-2016",
-        subTitle: "Source: thesolarfoundation.com",
+        title: "Time versus Maximum Voltage Supply",
+        subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Maximum Voltage (V)",
         lineSeriesName: "Voltage",
-        caption: "The installation sector sees the most growth.",
+        // caption: "The installation sector sees the most growth.",
         requestUrl: host + "getMaximumVoltage",
         unit: "V"
     },
     {
-        title: "Solar Employment Growth by Sector, 2010-2016",
-        subTitle: "Source: thesolarfoundation.com",
+        title: "Time versus Minimum Voltage Supply",
+        subTitle: "Value Source: In-House Designed Meters",
         yAxisTitle: "Minimum Voltage (V)",
         lineSeriesName: "Voltage",
-        caption: "The installation sector sees the most growth.",
+        // caption: "The installation sector sees the most growth.",
         requestUrl: host + "getMinimumVoltage",
         unit: "V"
     },
     {
-        title: "Solar Employment Growth by Sector, 2010-2016",
-        subTitle: "Source: thesolarfoundation.com",
-        yAxisTitle: "Average current (amp)",
-        lineSeriesName: "current",
-        caption: "The installation sector sees the most growth.",
+        title: "Time versus Average Current Consumption",
+        subTitle: "Value Source: In-House Designed Meters",
+        yAxisTitle: "Average Current (Amp)",
+        lineSeriesName: "Current",
+        // caption: "The installation sector sees the most growth.",
         requestUrl: host + "getAverageCurrent",
         unit: "amp"
     },
     {
-        title: "Solar Employment Growth by Sector, 2010-2016",
-        subTitle: "Source: thesolarfoundation.com",
-        yAxisTitle: "Maximum current (amp)",
-        lineSeriesName: "current",
-        caption: "The installation sector sees the most growth.",
+        title: "Time versus Maximum Current Consumption",
+        subTitle: "Value Source: In-House Designed Meters",
+        yAxisTitle: "Maximum Current (Amp)",
+        lineSeriesName: "Current",
+        // caption: "The installation sector sees the most growth.",
         requestUrl: host + "getMaximumCurrent",
         unit: "amp"
     },
     {
-        title: "Solar Employment Growth by Sector, 2010-2016",
-        subTitle: "Source: thesolarfoundation.com",
-        yAxisTitle: "Minimum current (amp)",
-        lineSeriesName: "current",
-        caption: "The installation sector sees the most growth.",
+        title: "Time versus Minimum Current Consumption",
+        subTitle: "Value Source: In-House Designed Meters",
+        yAxisTitle: "Minimum Current (Amp)",
+        lineSeriesName: "Current",
+        // caption: "The installation sector sees the most growth.",
         requestUrl: host + "getMinimumCurrent",
         unit: "amp"
     }
