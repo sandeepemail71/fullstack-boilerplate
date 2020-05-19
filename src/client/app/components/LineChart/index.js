@@ -93,9 +93,7 @@ function LineChart(props) {
             })
         }
         request(requestUrl, options).then((data) => {
-            let filteredData = data.data.filter((ele, i) => i % 2 !== 0)
-            console.log(filteredData);
-            setPower(filteredData);
+            setPower(data.data);
             setLoader(false);
         }).catch((err) => {
             console.log(err);
